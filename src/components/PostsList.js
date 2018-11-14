@@ -13,9 +13,7 @@ class PostsList extends Component {
   render() {
     const {posts} = this.props
     console.log('Posts', posts)
-    const listOfPosts = {}
-    if (posts.length !== 0){
-        this.listOfPosts = posts.map((post) => {
+    const listOfPosts = posts ? posts.map((post) => {
             return (
             <li className='listStyleNone'>
                 <div className="post_category"><p><b>Category: </b> {post.category}</p></div>
@@ -25,14 +23,7 @@ class PostsList extends Component {
                 <div className='post_author'>Created at: {formatTimeStamp(post.timestamp)}</div>
             </li>
             )
-        })
-    }
-    else{
-        return(
-            <div>Loading...</div>
-        )
-    }
-    
+        })     : ""
     return (
     <div className='container'>
         <div className="Post">
@@ -46,7 +37,7 @@ class PostsList extends Component {
 }
 
 const mapStateToProps = state => ({
-    posts: state.posts
+    posts: state.posts.posts
 });
 
 const mapDispatchToProps = dispatch => ({

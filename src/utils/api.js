@@ -47,14 +47,14 @@ export const getPost = (postId) =>
       .then(res => res.json())
 
 //Vote on a post
-export const voteOnPost = (postId, thumbsUp) =>
+export const voteOnPost = (postId, option) =>
     fetch(`${api}/posts/${postId}`, {
     method: 'POST',
     headers: {
         ...headers,
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify({'option': thumbsUp? 'upVote' : 'downVote'}) //or just option
+    body: JSON.stringify({option})
     }).then(res => res.json())
 
 //Edit the details of an existing post

@@ -27,4 +27,4 @@ const categories = (state = { categories: [] }, action) => {
   }
 }
 
-  export default combineReducers({posts, categories,})
+  export default combineReducers({posts: posts, categories: categories,})
