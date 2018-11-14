@@ -93,7 +93,7 @@ export const addComment = (body, author, parentId) =>
   }).then(res => res.json())
 
 //Get specific comment
-export const getComment = (commentId) =>
+export const getComments = (commentId) =>
   fetch(`${api}/comments/${commentId}`, { headers })
       .then(res => res.json())
 
@@ -125,4 +125,3 @@ export const deleteComment = (commentId) =>
     method: 'DELETE',
     headers: headers
   }).then(res => res.json())
-
