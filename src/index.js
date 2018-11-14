@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'
+import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
@@ -20,9 +21,11 @@ const store = createStore(
 console.log(store.getState())
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App/>
-    </Provider>, 
+    <BrowserRouter>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </BrowserRouter>, 
     document.getElementById('root'));
 
 serviceWorker.unregister();

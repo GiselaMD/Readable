@@ -8,7 +8,8 @@ if (!token)
 
 const headers = {
     'Accept': 'application/json',
-    'Authorization': token
+    'Authorization': token,
+    'Content-Type': 'application/json'
 }
 
 //Get all of the categories available for the app
@@ -60,10 +61,7 @@ export const voteOnPost = (postId, thumbsUp) =>
 export const editPost = (postId, title, body) =>
   fetch(`${api}/posts/${postId}`, {
     method: 'PUT',
-    headers: {
-        ...headers,
-        'Content-Type': 'application/json'
-    },
+    headers: headers,
     body: JSON.stringify({ title, body})
   }).then(res => res.json())
 
@@ -85,10 +83,7 @@ export const getCommentsForPost = (postId) =>
 export const addComment = (body, author, parentId) =>
   fetch(`${api}/comments`, {
     method: 'POST',
-    headers: {
-        ...headers,
-        'Content-Type': 'application/json'
-    },
+    headers: headers,
     body: JSON.stringify({ parentId, body, author, id: uuid(), timestamp:Date.now()})
   }).then(res => res.json())
 
@@ -98,24 +93,18 @@ export const getComments = (commentId) =>
       .then(res => res.json())
 
 //Vote on a comment
-export const voteOnComment = (commentId, thumbsUp) =>
+export const voteOnComment = (commentId, option) =>
     fetch(`${api}/comments/${commentId}`, {
     method: 'POST',
-    headers: {
-        ...headers,
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ option: thumbsUp? 'upVote' : 'downVote'}) //or option
+    headers: headers,
+    body: JSON.stringify({ option })
     }).then(res => res.json())
 
 //Edit the details of an existing comment
 export const editComment = (commentId, body) =>
   fetch(`${api}/comments/${commentId}`, {
     method: 'PUT',
-    headers: {
-        ...headers,
-        'Content-Type': 'application/json'
-    },
+    headers: headers,
     body: JSON.stringify({timestamp:Date.now(), body})
   }).then(res => res.json())
 

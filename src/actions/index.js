@@ -31,17 +31,37 @@ export const EDIT_COMMENT = 'EDIT_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 
 export const fetchAllPosts = () => dispatch => (
-    getPosts()
-      .then(posts => {
-        posts.map(post => {
-            getCommentsForPost(post.id)
-            .then(comments => {
-              dispatch({
-                type: GET_ALL_POSTS,
-                post,
-                comments
-              })
+  getPosts()
+    .then(posts => {
+      posts.map(post => {
+          getCommentsForPost(post.id)
+          .then(comments => {
+            dispatch({
+              type: GET_ALL_POSTS,
+              post,
+              comments
             })
-        })
+          })
       })
+    })
+)
+
+  export const fetchAllCategories = () => dispatch => (
+    getCategories()
+      .then(categories => {
+          dispatch({
+            type: GET_CATEGORIES,
+            categories
+          })
+        })
   )
+
+  // export const fetchCommentForPost = (parentId) => {
+  //   return (dispatch) => {
+  //     getComments(parentId).then(comments => {
+  //       dispatch({ 
+  //         type: GET_COMMENTS_FOR_POST, parentId, comments 
+  //       })
+  //     })
+  //   }
+  // }

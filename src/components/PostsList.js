@@ -1,0 +1,57 @@
+import React, { Component } from 'react';
+import './App.css';
+import './PostsList.css';
+import formatTimeStamp from '../utils/helpers'
+import { connect } from 'react-redux'
+import { fetchAllPosts, fetchCommentForPost } from '../actions';
+
+class PostsList extends Component {
+  componentDidMount() {
+    this.props.getPosts()
+  }
+  
+  render() {
+    const {posts} = this.props
+    console.log('Posts', posts)
+    const listOfPosts = {}
+    if (posts.length !== 0){
+        this.listOfPosts = posts.map((post) => {
+            return (
+            <li className='listStyleNone'>
+                <div className="post_category"><p><b>Category: </b> {post.category}</p></div>
+                <div className='post_title'>{post.title}</div> <br/>
+                <div className='post_author'>Author: {post.author}</div>
+                <div className='post_body'>{post.body}</div><br/>
+                <div className='post_author'>Created at: {formatTimeStamp(post.timestamp)}</div>
+            </li>
+            )
+        })
+    }
+    else{
+        return(
+            <div>Loading...</div>
+        )
+    }
+    
+    return (
+    <div className='container'>
+        <div className="Post">
+            <h1>Posts: </h1>
+            {listOfPosts}
+        </div>
+    </div>
+     
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+    posts: state.posts
+});
+
+const mapDispatchToProps = dispatch => ({
+    getPosts: () => dispatch(fetchAllPosts())
+    // getCommentsByPost(postId) {dispatch(fetchCommentForPost(postId))}
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostsList);
