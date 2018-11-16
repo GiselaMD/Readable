@@ -27,6 +27,7 @@ class Post extends Component {
       <div className="PostDetail">
       <br/>
       Aqui eu chamo o 'post.id' e tento pegar os comentários: <br/>
+     { console.log(this.props.match.params.id)}
         {this.props.id}
         {post.comments ? post.comments.map((comment) => {
         return (

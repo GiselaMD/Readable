@@ -21,7 +21,14 @@
 .App-link {
   color: #61dafb;
 }
-
+.categories_container{
+  float: right;
+}
+.home_container{
+  height: 100px;
+  background-color: #dbe6ff;
+  text-align: center;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

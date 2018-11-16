@@ -21,6 +21,7 @@ class Categories extends Component {
       
       return(
         <div className="Categories">
+        <h4>Categories: </h4>
           <ul>
             {listOfCategories}
           </ul>

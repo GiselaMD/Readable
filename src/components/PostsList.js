@@ -4,7 +4,7 @@ import './App.css';
 import './PostsList.css';
 import formatTimeStamp from '../utils/helpers'
 import { connect } from 'react-redux'
-import { fetchAllPosts, fetchCommentForPost } from '../actions';
+import { fetchAllPosts, votePost } from '../actions';
 import Post from './Post';
 import {Jumbotron, Button, ButtonToolbar, Dropdown, DropdownButton, MenuItem} from 'react-bootstrap'
 import {FaThumbsUp, FaThumbsDown, FaAngleDoubleRight} from 'react-icons/fa'
@@ -12,6 +12,14 @@ import {FaThumbsUp, FaThumbsDown, FaAngleDoubleRight} from 'react-icons/fa'
 class PostsList extends Component {
   componentDidMount() {
     this.props.getPosts()
+  }
+
+  handleVotar = (id, option) => {
+    let data = {
+      option: option
+    }
+
+    this.props.votePost(id, data)
   }
   
   render() {
@@ -33,7 +41,7 @@ class PostsList extends Component {
     const listOfPosts = posts.map((post) => {
             return (
             <li className='listStyleNone'>
-                <Post id={post.id}/>
+                {/* <Post id={post.id}/> */}
                 <Jumbotron>
                     <h2 className='post_title'>[POST] {post.title} </h2>
                     <div className='post_author'>Author: {post.author}</div>
@@ -44,8 +52,8 @@ class PostsList extends Component {
                     </div><br/>
                     <div className='post_author'>Created at: {formatTimeStamp(post.timestamp)}</div>
                     <p>
-                        <Button bsStyle="primary" className='btn_thumbsup'><FaThumbsUp></FaThumbsUp></Button> 
-                        <Button bsStyle="danger"><FaThumbsDown></FaThumbsDown></Button>
+                        <Button bsStyle="primary" className='btn_thumbsup' onClick={() => this.handleVotar(post.id, 'upVote')}><FaThumbsUp></FaThumbsUp></Button> 
+                        <Button bsStyle="danger" onClick={() => this.handleVotar(post.id, 'downVote')}><FaThumbsDown></FaThumbsDown></Button>
                     </p>
                     <p className='text_btn_openpost'>
                         <Link to={`/post/${post.id}`}>
@@ -76,7 +84,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    getPosts: () => dispatch(fetchAllPosts())
+    getPosts: () => dispatch(fetchAllPosts()),
+    votePost: (id, data) => dispatch(votePost(id, data))
     // getCommentsByPost(postId) {dispatch(fetchCommentForPost(postId))}
 });
 

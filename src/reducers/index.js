@@ -1,4 +1,4 @@
-import {GET_ALL_POSTS, GET_COMMENTS_FOR_POST, GET_CATEGORIES, GET_POST, ADD_COMMENT} from '../actions'
+import {GET_ALL_POSTS, GET_COMMENTS_FOR_POST, GET_CATEGORIES, GET_POST, ADD_COMMENT, VOTE_ON_POST} from '../actions'
 import { combineReducers } from "redux";
 
 // ALL POSTS
@@ -10,6 +10,23 @@ const posts = (state = { posts: [] }, action) => {
       return {
         posts: [...state.posts, action.post] //adicionando mais um post no estado Posts
       }
+    case VOTE_ON_POST:
+    console.log('Score', action)
+      return{
+        ...state,
+        posts: state.posts.map(post => {
+          if (post.id === action.postId) {
+            if (action.option === "upVote") {
+              post.voteScore += 1
+            }
+            if (action.option === "downVote") {
+              post.voteScore -= 1
+            }
+          }
+          return post
+        })
+       
+      } 
     default:
       return state
   }

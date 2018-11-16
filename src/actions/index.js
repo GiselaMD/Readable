@@ -59,6 +59,13 @@ export const fetchPost = (id) => dispatch => (
     })
 )
 
+export const votePost = (postId, option) => {
+  return (dispatch) => {
+    voteOnPost(postId, option).then(
+      () => dispatch({ type: VOTE_ON_POST, postId, option })
+    )
+  }
+}
   export const fetchAllCategories = () => dispatch => (
     getCategories()
       .then(categories => {

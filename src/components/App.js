@@ -6,6 +6,7 @@ import { fetchAllPosts } from '../actions';
 import PostsList from './PostsList';
 import Categories from './Categories';
 import Post from './Post';
+import {Breadcrumb} from 'react-bootstrap'
 class App extends Component {
   // componentDidMount() {
   //   this.props.getPosts()
@@ -16,12 +17,15 @@ class App extends Component {
     const {posts} = this.props
     return (
       <div className="app">
-      <h1>Readable - Udacity</h1>
+      <div className="home_container">
+        <h1>Readable - Udacity</h1>
+      </div>
+      
       <Switch>
         <Route exact path='/' render={(props) => (
           <div>
-              <Categories/>
-              <PostsList/>
+            <div className="col-md-2 categories_container"><Categories/></div>
+            <div className="col-md"><PostsList/></div>
             </div>
           )}/>
           <Route
