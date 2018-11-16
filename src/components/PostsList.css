@@ -27,3 +27,18 @@
 .post_category{
     font-size: 20px;
 }
+.post_score{
+    text-align: left;
+}
+.post_comments{
+    text-align: right;
+}
+.btn_thumbsup{
+    margin-right: 10px;
+}
+.text_btn_openpost{
+    text-align: center;
+}
+.btn_openpost{
+    background-color: #a8a3ff;
+}

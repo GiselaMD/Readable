@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import './App.css';
 import { connect } from 'react-redux'
 import { fetchAllPosts } from '../actions';
@@ -17,18 +17,17 @@ class App extends Component {
     return (
       <div className="app">
       <h1>Readable - Udacity</h1>
+      <Switch>
+        <Route exact path='/' render={(props) => (
+          <div>
+              <Categories/>
+              <PostsList/>
+            </div>
+          )}/>
           <Route
-              exact
-              path="/"
-              render={() => (
-                  <PostsList  />
-              )} />
-              <Route
-              exact
-              path="/categories"
-              render={() => (
-                  <Categories />
-              )} />
+          path="/post/:id"
+          Component={Post} />
+      </Switch>
       </div>
     );
   }
