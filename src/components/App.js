@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { fetchAllPosts } from '../actions';
 import PostsList from './PostsList';
 import Categories from './Categories';
+import Post from './Post';
 class App extends Component {
   // componentDidMount() {
   //   this.props.getPosts()

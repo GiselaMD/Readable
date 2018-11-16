@@ -45,6 +45,19 @@ export const fetchAllPosts = () => dispatch => (
       })
     })
 )
+export const fetchPost = (id) => dispatch => (
+  getPost(id)
+    .then(post => {
+      getCommentsForPost(post.id)
+        .then(comments => {
+          dispatch({
+            type: GET_POST,
+            post,
+            comments
+          })
+        })
+    })
+)
 
   export const fetchAllCategories = () => dispatch => (
     getCategories()
@@ -56,12 +69,12 @@ export const fetchAllPosts = () => dispatch => (
         })
   )
 
-  // export const fetchCommentForPost = (parentId) => {
-  //   return (dispatch) => {
-  //     getComments(parentId).then(comments => {
-  //       dispatch({ 
-  //         type: GET_COMMENTS_FOR_POST, parentId, comments 
-  //       })
-  //     })
-  //   }
-  // }
+  export const fetchAllComments = (commentId) => {
+    return (dispatch) => {
+      getComments(commentId).then(comments => {
+        dispatch({ 
+          type: GET_COMMENT, commentId, comments 
+        })
+      })
+    }
+  }
