@@ -33,7 +33,6 @@ class PostsList extends Component {
         <div className="Post">
             <h1>Posts: </h1>
             {listOfPosts}
-            
         </div>
     </div>
      

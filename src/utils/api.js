@@ -1,7 +1,7 @@
 import uuid from 'uuid';
 const api = "http://localhost:3001"
 
-// Generate a unique token for storing your bookshelf data on the backend server.
+// Generate a unique token
 let token = localStorage.token
 if (!token)
   token = localStorage.token = Math.random().toString(36).substr(-8)

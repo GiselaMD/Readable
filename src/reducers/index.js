@@ -5,6 +5,7 @@ import { combineReducers } from "redux";
 const posts = (state = { posts: [] }, action) => {
   switch(action.type) {
     case GET_ALL_POSTS:
+    console.log('GET_all_posts: ',action)
       action.post.comments = action.comments
       return {
         posts: [...state.posts, action.post] //adicionando mais um post no estado Posts
@@ -31,7 +32,9 @@ const categories = (state = { categories: [] }, action) => {
 const post = (state = { post: {} }, action) => {
   switch(action.type) {
     case GET_POST:
+    console.log('GET_POST: ',action)
       action.post.comments = action.comments
+      
       return {
         ...state, 
         post: action.post

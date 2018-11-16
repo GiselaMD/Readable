@@ -7,18 +7,27 @@ import { fetchPost } from '../actions'
 class Post extends Component {
   
   componentDidMount() {
-    const { id } = this.props.id
+    const { id } = this.props
+    console.log('id: ',id)
     this.props.getPost(id)
   }
 
   render() {
     const { post } = this.props.post
-    const { comments } = this.props
+    const listOfComments = post.comments ? post.comments.map((comment) => {
+        return (
+        <li className='listStyleNone'>
+            <div className='post_body'>{comment.body}</div><br/>
+        </li>
+        )
+      }) : ''
+    
     return(
       <div className="PostDetail">
       <br/>
       Aqui eu chamo o 'post.id' e tento pegar os comentários: <br/>
         {this.props.id}
+        {listOfComments}
       </div>
     )
   }
@@ -26,7 +35,7 @@ class Post extends Component {
 
 const mapStateToProps = ({ post }) => {
   return {
-    post: post.post
+    post: post
   }
 }
 

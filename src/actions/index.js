@@ -54,7 +54,7 @@ export const fetchPost = (id) => dispatch => (
             type: GET_POST,
             post,
             comments
-          })
+          }) 
         })
     })
 )
