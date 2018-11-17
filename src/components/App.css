@@ -24,6 +24,12 @@
 .categories_container{
   float: right;
 }
+.posts_container{
+  float: left;
+}
+.row_container{
+  margin-right: 0px;
+}
 .home_container{
   height: 100px;
   background-color: #dbe6ff;

@@ -1,4 +1,4 @@
-import {GET_ALL_POSTS, GET_COMMENTS_FOR_POST, GET_CATEGORIES, GET_POST, ADD_COMMENT, VOTE_ON_POST} from '../actions'
+import {GET_ALL_POSTS, GET_COMMENTS_FOR_POST, GET_CATEGORIES, GET_POST, ADD_COMMENT, VOTE_ON_POST, GET_POST_IN_CATEGORY} from '../actions'
 import { combineReducers } from "redux";
 
 // ALL POSTS
@@ -25,8 +25,12 @@ const posts = (state = { posts: [] }, action) => {
           }
           return post
         })
-       
       } 
+      case GET_POST_IN_CATEGORY:
+        return {
+          ...state,
+          posts: action.posts
+        }
     default:
       return state
   }

@@ -9,6 +9,7 @@ import PostCard from './PostCard';
 import {FaAngleDoubleRight} from 'react-icons/fa'
 
 class PostsList extends Component {
+    //TODO: Botão para criar post
   componentDidMount() {
     this.props.getPosts()
   }

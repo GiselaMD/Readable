@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { fetchAllCategories } from '../actions'
 
@@ -13,18 +14,20 @@ class CategoryList extends Component {
       console.log(categories)
       const listOfCategories = categories.map((category) => {
         return (
-          <li>
-            {category.name}
-          </li>
+          <div>
+            <Link to={`/${category.path}`}>
+              {category.name}
+            </Link>
+          </div>
         )
       })
       
       return(
         <div className="Categories">
         <h4>Categories: </h4>
-          <ul>
-            {listOfCategories}
-          </ul>
+          
+            {categories ? listOfCategories : null}
+          
         </div>
       )
     }

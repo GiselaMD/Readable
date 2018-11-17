@@ -13,13 +13,11 @@ class Post extends Component {
 
   render() {
     const { post } = this.props.post
-    // const listOfComments = (post.comments) ? post.comments.map((comment) => {
-    //     return (
-    //     <li className='listStyleNone'>
-    //         <div className='post_body'>{comment.body}</div><br/>
-    //     </li>
-    //     )
-    //   }) : ''
+   
+    //TODO: Botão para editar ou excluir post
+    //TODO: Adicionar lista de comentários --> CommentCard --> CommentDetail
+    //TODO: Botão para votar no comentário
+    //TODO: Botão para adicionar comentário
     
     return(
       <div className="PostDetail" className='container'>

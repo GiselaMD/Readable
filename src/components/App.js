@@ -6,6 +6,7 @@ import { fetchAllPosts } from '../actions';
 import PostsList from './PostsList';
 import {Breadcrumb} from 'react-bootstrap'
 import CategoryList from './CategoryList';
+import Category from './Category';
 import PostDetail from './PostDetail';
 class App extends Component {
   // componentDidMount() {
@@ -24,13 +25,20 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={(props) => (
             <div>
-              <div className="col-md-2 categories_container"><CategoryList/></div>
-              <div className="col-md"><PostsList/></div>
+              <div className="row row_container">
+              <div className="col-md-2"></div>
+                <div className="col-md posts_container"><PostsList/></div>
+                <div className="col-md-2 categories_container"><CategoryList/></div>
+              </div>
+              
               </div>
             )}/>
             <Route
             path="/:category/:id"
             component={PostDetail} />
+            <Route
+            path="/:category"
+            component={Category} />
         </Switch>
       </div>
     );

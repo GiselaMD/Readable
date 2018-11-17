@@ -59,6 +59,16 @@ export const fetchPost = (id) => dispatch => (
     })
 )
 
+export const getAllPostsCategoryAction = (category) => dispatch => (
+  getPostsInCategory(category)
+    .then((posts) => {
+      dispatch({
+        type: GET_POST_IN_CATEGORY,
+        posts
+      })
+    })
+)
+
 export const votePost = (postId, option) => {
   return (dispatch) => {
     voteOnPost(postId, option).then(
