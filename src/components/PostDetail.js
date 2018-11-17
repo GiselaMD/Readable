@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './App.css';
 import { connect } from 'react-redux'
 import { fetchPost } from '../actions'
+import PostCard from './PostCard';
 
 
 class Post extends Component {
@@ -21,11 +22,12 @@ class Post extends Component {
     //   }) : ''
     
     return(
-      <div className="PostDetail">
+      <div className="PostDetail" className='container'>
       <br/>
       Aqui eu chamo o 'post.id' e tento pegar os comentários: <br/>
-     { console.log(this.props) }
-        {this.props.match.params.id}
+      <PostCard postId={post.id} post={post}/>
+        { console.log(this.props) }
+            {this.props.match.params.id}
 
         {post.comments ? post.comments.map((comment) => {
         return (

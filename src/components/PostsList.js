@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
 import './PostsList.css';
-import formatTimeStamp from '../utils/helpers'
 import { connect } from 'react-redux'
 import { fetchAllPosts, votePost } from '../actions';
-import Post from './Post';
 import {Jumbotron, Button, ButtonToolbar, Dropdown, DropdownButton, MenuItem} from 'react-bootstrap'
-import {FaThumbsUp, FaThumbsDown, FaAngleDoubleRight} from 'react-icons/fa'
+import PostCard from './PostCard';
+import {FaAngleDoubleRight} from 'react-icons/fa'
 
 class PostsList extends Component {
   componentDidMount() {
@@ -38,40 +37,32 @@ class PostsList extends Component {
         </div>
     );
       
-    const listOfPosts = posts.map((post) => {
-            return (
-            <li className='listStyleNone'>
-                {/* <Post id={post.id}/> */}
-                <Jumbotron>
-                    <h2 className='post_title'>[POST] {post.title} </h2>
-                    <div className='post_author'>Author: {post.author}</div>
-                    <div className='post_body'>{post.body}</div><br/>
-                    <div className='row'>
-                        <div className='post_score col-md-6'>Pontuação: {post.voteScore}</div>
-                        <div className='post_comments col-md-6'>Comentários: {post.commentCount}</div>
-                    </div><br/>
-                    <div className='post_author'>Created at: {formatTimeStamp(post.timestamp)}</div>
-                    <p>
-                        <Button bsStyle="primary" className='btn_thumbsup' onClick={() => this.handleVotar(post.id, 'upVote')}><FaThumbsUp></FaThumbsUp></Button> 
-                        <Button bsStyle="danger" onClick={() => this.handleVotar(post.id, 'downVote')}><FaThumbsDown></FaThumbsDown></Button>
-                    </p>
-                    <p className='text_btn_openpost'>
-                        <Link to={`/post/${post.id}`}>
-                            <Button className='btn_openpost' block>
-                                <strong>Open Post</strong> <FaAngleDoubleRight></FaAngleDoubleRight>
-                            </Button>
-                        </Link>
-                    </p>
-                </Jumbotron>
-            </li>
-            )
-        })
+    const listOfPosts = () => (
+        posts ? 
+            posts.map((post) => {
+                return (
+                    <div>
+                        <PostCard key={post.id} postId={post.id} post={post}/>
+                        <p className='text_btn_openpost'>
+                            <Link to={`/${post.category}/${post.id}`}>
+                                <Button className='btn_openpost' block>
+                                    <strong>Open Post</strong> <FaAngleDoubleRight></FaAngleDoubleRight>
+                                </Button>
+                            </Link>
+                        </p>
+                    </div>
+                    
+                )
+            })
+            :
+            null
+    ) 
     return (
     <div className='container'>
         <div className="Post">
             <h1>Posts: </h1>
             {buttonsInstance}
-            {listOfPosts}
+            {listOfPosts()}
         </div>
     </div>
      
@@ -86,7 +77,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     getPosts: () => dispatch(fetchAllPosts()),
     votePost: (id, data) => dispatch(votePost(id, data))
-    // getCommentsByPost(postId) {dispatch(fetchCommentForPost(postId))}
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsList);

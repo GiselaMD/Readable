@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchAllCategories } from '../actions'
 
-class Categories extends Component {
+class CategoryList extends Component {
   
     componentDidMount() {  
       this.props.getCategories()
@@ -42,4 +42,4 @@ class Categories extends Component {
     }
   }
   
-  export default connect(mapStateToProps, mapDispatchToProps)(Categories)
+  export default connect(mapStateToProps, mapDispatchToProps)(CategoryList)
