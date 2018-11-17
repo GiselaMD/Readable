@@ -51,7 +51,6 @@ const post = (state = { post: {} }, action) => {
     case GET_POST:
     console.log('GET_POST: ',action)
       action.post.comments = action.comments
-      
       return {
         ...state, 
         post: action.post

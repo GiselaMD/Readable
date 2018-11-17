@@ -30,7 +30,7 @@ class App extends Component {
           )}/>
           <Route
           path="/post/:id"
-          Component={Post} />
+          component={Post} />
       </Switch>
       </div>
     );

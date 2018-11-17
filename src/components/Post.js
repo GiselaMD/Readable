@@ -7,10 +7,7 @@ import { fetchPost } from '../actions'
 class Post extends Component {
   
   componentDidMount() {
-  
-    const { id } = this.props.match.params.id
-    console.log('id: ',id)
-    this.props.getPost(id)
+    this.props.getPost(this.props.match.params.id)
   }
 
   render() {
@@ -27,8 +24,9 @@ class Post extends Component {
       <div className="PostDetail">
       <br/>
       Aqui eu chamo o 'post.id' e tento pegar os comentários: <br/>
-     { console.log(this.props.match.params.id)}
-        {this.props.id}
+     { console.log(this.props) }
+        {this.props.match.params.id}
+
         {post.comments ? post.comments.map((comment) => {
         return (
           <li className='listStyleNone'>
