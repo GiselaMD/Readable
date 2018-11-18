@@ -19,7 +19,7 @@ class Category extends Component {
            (this.props.posts && this.props.posts.length > 0) 
            ? (  this.props.posts.map(post => 
                     <div className="container">
-                        <PostCard postId={post.id} post={post}/>
+                        <PostCard postId={post.id} post={post} score={post.voteScore}/>
                     </div>
                 )
             ): 

@@ -10,7 +10,7 @@ import { votePost } from '../actions';
 class PostCard extends Component {
   
     render() {
-      const {post} = this.props
+      const {post, score} = this.props
       return(
         <div>
         <li key={post.id} className="listStyleNone">
@@ -19,7 +19,7 @@ class PostCard extends Component {
                       <div className='post_author'>Author: {post.author}</div>
                       <div className='post_body'>{post.body}</div><br/>
                       <div className='row'>
-                          <div className='post_score col-md-6'>Pontuação: {post.voteScore}</div>
+                          <div className='post_score col-md-6'>Pontuação: {score}</div>
                           <div className='post_comments col-md-6'>Comentários: {post.commentCount}</div>
                       </div><br/>
                       <div className='post_author'>Created at: {formatTimeStamp(post.timestamp)}</div>

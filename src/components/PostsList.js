@@ -35,7 +35,7 @@ class PostsList extends Component {
             posts.map((post) => {
                 return (
                     <div key={post.id}>
-                        <PostCard key={post.id} postId={post.id} post={post}/>
+                        <PostCard key={post.id} postId={post.id} post={post} score={post.voteScore}/>
                         <p className='text_btn_openpost'>
                             <Link to={`/${post.category}/${post.id}`} >
                                 <Button className='btn_openpost' block>

@@ -21,6 +21,7 @@ export const GET_ALL_POSTS = 'GET_ALL_POSTS'
 export const ADD_POST = 'ADD_POST'
 export const GET_POST = 'GET_POST'
 export const VOTE_ON_POST = 'VOTE_ON_POST'
+export const VOTE_ON_POST_FROMPOST = 'VOTE_ON_POST_FROMPOST'
 export const EDIT_POST = 'EDIT_POST'
 export const DELETE_POST = 'DELETE_POST'
 export const GET_COMMENTS_FOR_POST = 'GET_COMMENTS_FOR_POST'
@@ -77,6 +78,15 @@ export const votePost = (postId, option) => {
     )
   }
 }
+
+export const voteComment = (commentId, option) => {
+  return (dispatch) => {
+    voteOnComment(commentId, option).then(
+      () => dispatch({ type: VOTE_ON_COMMENT, commentId, option })
+    )
+  }
+}
+
   export const fetchAllCategories = () => dispatch => (
     getCategories()
       .then(categories => {
@@ -87,11 +97,11 @@ export const votePost = (postId, option) => {
         })
   )
 
-  export const fetchAllComments = (commentId) => {
+  export const fetchAllComments = (parentId) => {
     return (dispatch) => {
-      getComments(commentId).then(comments => {
+      getCommentsForPost(parentId).then(comments => {
         dispatch({ 
-          type: GET_COMMENT, commentId, comments 
+          type: GET_COMMENT, parentId, comments 
         })
       })
     }

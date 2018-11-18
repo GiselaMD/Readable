@@ -1,4 +1,4 @@
-import {GET_ALL_POSTS, GET_CATEGORIES, GET_POST, ADD_COMMENT, VOTE_ON_POST, GET_POST_IN_CATEGORY} from '../actions'
+import {GET_ALL_POSTS, GET_CATEGORIES, GET_POST, ADD_COMMENT, VOTE_ON_POST, VOTE_ON_POST_FROMPOST, GET_POST_IN_CATEGORY, GET_COMMENT, VOTE_ON_COMMENT} from '../actions'
 import { combineReducers } from "redux";
 
 // ALL POSTS
@@ -15,6 +15,7 @@ const posts = (state = { posts: [] }, action) => {
         ...state,
         posts: state.posts.map(post => {
           if (post.id === action.postId) {
+            post = {...post} //forcando renderizacao
             if (action.option === "upVote") {
               post.voteScore += 1
             }
@@ -63,6 +64,21 @@ const post = (state = { post: {} }, action) => {
     //     ...state, 
     //     post: { }
     //   }
+    case VOTE_ON_POST:
+        if (action.option === "upVote") {
+          state.post.voteScore += 1
+        }
+        if (action.option === "downVote") {
+          state.post.voteScore -= 1
+        }
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          voteScore: state.post.voteScore
+        }
+      }
+      
     case ADD_COMMENT:
       return {
         ...state,
@@ -76,4 +92,31 @@ const post = (state = { post: {} }, action) => {
   }
 }
 
-  export default combineReducers({posts: posts, post: post, categories: categories,})
+function comments (state = {comments: []}, action) {
+  switch(action.type) {
+    case GET_COMMENT:
+      return {
+        comments: [...state.comments, action.comments] 
+      }
+    case VOTE_ON_COMMENT:
+    console.log('VOTE_ON_COMMENT: ',action)
+      return {
+        ...state,
+        comments: state.comments.map(comment => {
+          if (comment.id === action.postId) {
+            if (comment.option === "upVote") {
+              comment.voteScore += 1
+            }
+            if (comment.option === "downVote") {
+              comment.voteScore -= 1
+            }
+          }
+          return comment;
+        })
+      }
+    default:
+      return state
+  }
+}
+
+  export default combineReducers({posts: posts, post: post, categories: categories, comments: comments})
