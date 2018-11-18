@@ -70,6 +70,7 @@ export const getAllPostsCategoryAction = (category) => dispatch => (
 )
 
 export const votePost = (postId, option) => {
+  console.log(option)
   return (dispatch) => {
     voteOnPost(postId, option).then(
       () => dispatch({ type: VOTE_ON_POST, postId, option })

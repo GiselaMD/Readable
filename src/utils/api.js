@@ -51,10 +51,9 @@ export const voteOnPost = (postId, option) =>
     fetch(`${api}/posts/${postId}`, {
     method: 'POST',
     headers: {
-        ...headers,
-        'Content-Type': 'application/json'
+        ...headers
     },
-    body: JSON.stringify({option})
+    body: JSON.stringify({option: option})
     }).then(res => res.json())
 
 //Edit the details of an existing post

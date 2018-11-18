@@ -14,14 +14,6 @@ class PostsList extends Component {
     this.props.getPosts()
   }
 
-  handleVotar = (id, option) => {
-    let data = {
-      option: option
-    }
-
-    this.props.votePost(id, data)
-  }
-  
   render() {
     const {posts} = this.props
     console.log('Posts', posts)
@@ -76,8 +68,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    getPosts: () => dispatch(fetchAllPosts()),
-    votePost: (id, data) => dispatch(votePost(id, data))
+    getPosts: () => dispatch(fetchAllPosts())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsList);

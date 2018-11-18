@@ -11,7 +11,6 @@ const posts = (state = { posts: [] }, action) => {
         posts: [...state.posts, action.post] //adicionando mais um post no estado Posts
       }
     case VOTE_ON_POST:
-    console.log('Score', action)
       return{
         ...state,
         posts: state.posts.map(post => {

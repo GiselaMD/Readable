@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getAllPostsCategoryAction } from '../actions'
-
+import PostCard from './PostCard';
+import './Category.css';
 class Category extends Component {
   
     componentDidMount() {  
@@ -14,11 +15,20 @@ class Category extends Component {
       return(
         <div className="Categories">
         <h4>Categoria: {this.props.match.params.category}</h4>
-        {(this.props.posts.length !== null) ? this.props.posts.map(post => 
-                    <div>
-                         {post.title}
+        {
+           (this.props.posts && this.props.posts.length > 0) 
+           ? (  this.props.posts.map(post => 
+                    <div className="container">
+                        <PostCard postId={post.id} post={post}/>
                     </div>
-                  ): ""}
+                )
+            ): 
+          (
+            <div className="container">
+               <h2 className="text_center">No Posts yet :(</h2> 
+            </div>
+          )
+          }
         </div>
       )
     }
