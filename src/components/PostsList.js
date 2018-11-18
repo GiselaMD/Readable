@@ -4,7 +4,7 @@ import './App.css';
 import './PostsList.css';
 import { connect } from 'react-redux'
 import { fetchAllPosts, votePost } from '../actions';
-import {Jumbotron, Button, ButtonToolbar, Dropdown, DropdownButton, MenuItem} from 'react-bootstrap'
+import {Button, ButtonToolbar, DropdownButton, MenuItem} from 'react-bootstrap'
 import PostCard from './PostCard';
 import {FaAngleDoubleRight} from 'react-icons/fa'
 
@@ -42,10 +42,10 @@ class PostsList extends Component {
         posts ? 
             posts.map((post) => {
                 return (
-                    <div>
+                    <div key={post.id}>
                         <PostCard key={post.id} postId={post.id} post={post}/>
                         <p className='text_btn_openpost'>
-                            <Link to={`/${post.category}/${post.id}`}>
+                            <Link to={`/${post.category}/${post.id}`} >
                                 <Button className='btn_openpost' block>
                                     <strong>Open Post</strong> <FaAngleDoubleRight></FaAngleDoubleRight>
                                 </Button>

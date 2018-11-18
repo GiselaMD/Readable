@@ -1,21 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './App.css';
 import './PostCard.css';
-import { connect } from 'react-redux'
-import { fetchPost } from '../actions'
 import {Jumbotron, Button} from 'react-bootstrap'
 import {FaThumbsUp, FaThumbsDown} from 'react-icons/fa'
 import formatTimeStamp from '../utils/helpers'
-import { Link } from 'react-router-dom';
 
 const PostCard = ({post}) => {
-  
-//   componentDidMount() {
-//     this.props.getPost(this.props.postId)
-//     console.log('PostDetail: ', this.props.postId)
-//   }
-
-    // const { post } = this.props
     
     return(
       <div>
@@ -39,17 +29,5 @@ const PostCard = ({post}) => {
       </div>
     )
   }
-
-// const mapStateToProps = ({ post }) => {
-//   return {
-//     post: post
-//   }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     getPost: (id) => dispatch(fetchPost(id))
-//   }
-// }
 
 export default PostCard

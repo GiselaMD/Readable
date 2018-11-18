@@ -24,12 +24,9 @@ class Post extends Component {
       <br/>
       Aqui eu chamo o 'post.id' e tento pegar os comentários: <br/>
       <PostCard postId={post.id} post={post}/>
-        { console.log(this.props) }
-            {this.props.match.params.id}
-
         {post.comments ? post.comments.map((comment) => {
         return (
-          <li className='listStyleNone'>
+          <li className='listStyleNone' key={comment.id}>
             <div className='post_body'>{comment.body}</div><br/>
            </li>
         )

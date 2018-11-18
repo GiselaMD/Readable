@@ -14,7 +14,7 @@ class CategoryList extends Component {
       console.log(categories)
       const listOfCategories = categories.map((category) => {
         return (
-          <div>
+          <div key={category.name}>
             <Link to={`/${category.path}`}>
               {category.name}
             </Link>
