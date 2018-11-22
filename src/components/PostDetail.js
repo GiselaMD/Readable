@@ -22,7 +22,7 @@ class Post extends Component {
     //TODO: Botão para votar no comentário
     //TODO: Botão para adicionar comentário
     
-    return(
+    return post ? (
       <div className="PostDetail" className='container'>
       <br/>
       <PostCard postId={post.id} post={post} score={post.voteScore}/>
@@ -31,6 +31,11 @@ class Post extends Component {
             <CommentCard comment={comment}/>
         )
         }) : '' }
+      </div>
+    ) : 
+    (
+      <div className="container">
+         <h2 className="text_center">Error 404</h2> 
       </div>
     )
   }
