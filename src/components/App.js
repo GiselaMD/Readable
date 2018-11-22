@@ -18,9 +18,9 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={(props) => (
               <Row className="row_container">
-                <Col md={2}></Col>
-                <Col md={8} className="posts_container"><PostsList/></Col>
-                <Col md={2} className="categories_container"><CategoryList/></Col>
+                <Col md={2} ></Col>
+                <Col lg={8} md={12} sm={12} className="posts_container"><PostsList/></Col>
+                <Col lg={2} md={2} className="categories_container"><CategoryList/></Col>
               </Row>
               
             )}/>

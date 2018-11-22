@@ -1,4 +1,4 @@
-import {GET_ALL_POSTS, GET_CATEGORIES, GET_POST, ADD_COMMENT, VOTE_ON_POST, VOTE_ON_POST_FROMPOST, GET_POST_IN_CATEGORY, GET_COMMENT, VOTE_ON_COMMENT, GET_COMMENTS_FOR_POST, SORT_POST} from '../actions'
+import {GET_ALL_POSTS, GET_CATEGORIES, GET_POST, ADD_COMMENT, VOTE_ON_POST, VOTE_ON_POST_FROMPOST, GET_POST_IN_CATEGORY, GET_COMMENT, VOTE_ON_COMMENT, GET_COMMENTS_FOR_POST, SORT_POST, DELETE_POST} from '../actions'
 import { combineReducers } from "redux";
 import sortBy from 'sort-by'
 
@@ -33,6 +33,8 @@ const posts = (state = [], action) => {
     console.log('SORT: ',action)
       return [].concat(state.sort(sortBy("-"+action.sortType))) // "-voteScore" or "-timestamp" 
 
+    case DELETE_POST:
+      return state.filter(post => post.id !== action.postId)
     default:
       return state
   }

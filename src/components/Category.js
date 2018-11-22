@@ -5,6 +5,7 @@ import PostCard from './PostCard';
 import './Category.css';
 import {Button, Row, Col, Grid} from 'react-bootstrap'
 import OrderBy from './OrderBy';
+import CategoryList from './CategoryList';
 class Category extends Component {
   
     componentDidMount() {  
@@ -35,7 +36,7 @@ class Category extends Component {
           )
           }
           </Col>
-          <Col md={2}></Col>
+          <Col md={2}><CategoryList/></Col>
         </Row>
         
       )

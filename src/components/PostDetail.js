@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import './App.css';
+import './PostDetail.css';
+import {Button} from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { fetchPost, fetchAllCommentsForPost } from '../actions'
+import { fetchPost, deleteCurrentPost, fetchAllCommentsForPost } from '../actions'
 import PostCard from './PostCard';
 import CommentCard from './CommentCard';
 
@@ -11,10 +13,10 @@ class Post extends Component {
     this.props.getPost(this.props.match.params.id)
     this.props.getComment(this.props.match.params.id)
   }
-  // handleVotar = (id, option) => {
-  //   this.props.votePostFromPost(id, option)
-  // }
-
+  onPostDelete = () => {
+    const id = this.props.match.params.id
+    this.props.deleteCurrentPost(id)
+  }
   render() {
     const { post, comments } = this.props
    
@@ -25,6 +27,8 @@ class Post extends Component {
       <div className="PostDetail" className='container'>
       <br/>
       <PostCard postId={post.id} post={post} score={post.voteScore}/>
+      <Button className="edit_post_btn" bsStyle="link">Editar</Button>
+      <Button className="remove_post_btn" bsStyle="link" onClick={() => this.onPostDelete()}>Excluir</Button>
         {comments ? comments.map((comment) => {
         return (
             <CommentCard comment={comment}/>
@@ -50,6 +54,7 @@ const mapStateToProps = ({ posts, comments }, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getPost: (id) => dispatch(fetchPost(id)),
+    deleteCurrentPost: (id) => dispatch(deleteCurrentPost(id)),
     getComment: (id) => dispatch(fetchAllCommentsForPost(id))
   }
 }

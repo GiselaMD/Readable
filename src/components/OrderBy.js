@@ -10,13 +10,13 @@ class OrderBy extends Component {
       return(
         <Grid>
                 <Row>
-                    <Col md={4}>Order By:</Col> 
-                    <Col md={3}> 
+                    <Col lg={3} md={3} sm={12}>Order By:</Col> 
+                    <Col lg={3} md={3} sm={12}> 
                         <Button bsStyle="primary" onClick={() => this.props.sortPost("voteScore")}>
                             Score
                         </Button>
                     </Col>
-                    <Col md={3}> 
+                    <Col lg={3} md={3} sm={12}> 
                         <Button bsStyle="primary" onClick={() => this.props.sortPost("timestamp")}>
                             Date
                         </Button>

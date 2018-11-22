@@ -76,6 +76,14 @@ export const sortPost = (sortType) => {
   }
 }
 
+export const deleteCurrentPost = (postId) => {
+  return (dispatch) => {
+    deletePost(postId).then(
+    () => dispatch({ type: DELETE_POST, postId })
+    )
+  }
+}
+
 export const voteComment = (commentId, option) => {
   console.log(option)
   return (dispatch) => {
