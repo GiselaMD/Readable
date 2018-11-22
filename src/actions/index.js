@@ -70,6 +70,7 @@ export const votePost = (postId, option) => {
 }
 
 export const voteComment = (commentId, option) => {
+  console.log(option)
   return (dispatch) => {
     voteOnComment(commentId, option).then(
       () => dispatch({ type: VOTE_ON_COMMENT, commentId, option })

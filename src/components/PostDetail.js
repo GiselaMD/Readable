@@ -19,7 +19,6 @@ class Post extends Component {
     const { post, comments } = this.props
    
     //TODO: Botão para editar ou excluir post
-    //TODO: Botão para votar no comentário
     //TODO: Botão para adicionar comentário
     
     return post ? (

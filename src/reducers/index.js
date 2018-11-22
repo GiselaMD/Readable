@@ -49,18 +49,18 @@ function comments (state = [], action) {
       return action.comments
 
     case VOTE_ON_COMMENT:
-    console.log('VOTE_ON_COMMENT: ',action)
-      return comments.map(comment => {
-          if (comment.id === action.postId) {
-            if (comment.option === "upVote") {
-              comment.voteScore += 1
-            }
-            if (comment.option === "downVote") {
-              comment.voteScore -= 1
-            }
+      return state.map(comment => {
+        if (comment.id === action.commentId) {
+          comment = {...comment} //forcando renderizacao
+          if (action.option === "upVote") {
+            comment.voteScore += 1
           }
-          return comment
-        })
+          if (action.option === "downVote") {
+            comment.voteScore -= 1
+          }
+        }
+        return comment
+    })
 
     default:
       return state
