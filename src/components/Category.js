@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { getAllPostsCategoryAction } from '../actions'
 import PostCard from './PostCard';
 import './Category.css';
+import {Button, Row, Col, Grid} from 'react-bootstrap'
+import OrderBy from './OrderBy';
 class Category extends Component {
   
     componentDidMount() {  
@@ -13,9 +15,12 @@ class Category extends Component {
         console.log('Posts in category: ', this.props.posts)
 
       return(
-        <div className="Categories">
-        <h4>Categoria: {this.props.match.params.category}</h4>
-        {
+        <Row>
+          <Col md={2}> </Col>
+          <Col md={8}> 
+          <h4>Categoria: {this.props.match.params.category}</h4>
+            <OrderBy/>
+            {
            (this.props.posts && this.props.posts.length > 0) 
            ? (  this.props.posts.map(post => 
                     <div className="container">
@@ -29,7 +34,10 @@ class Category extends Component {
             </div>
           )
           }
-        </div>
+          </Col>
+          <Col md={2}></Col>
+        </Row>
+        
       )
     }
   }

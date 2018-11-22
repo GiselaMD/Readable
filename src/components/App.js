@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import './App.css';
+import { Row, Col, Grid} from 'react-bootstrap'
 import PostsList from './PostsList';
 import CategoryList from './CategoryList';
 import Category from './Category';
@@ -16,14 +17,12 @@ class App extends Component {
         
         <Switch>
           <Route exact path='/' render={(props) => (
-            <div>
-              <div className="row row_container">
-                <div className="col-md-2"></div>
-                <div className="col-md posts_container"><PostsList/></div>
-                <div className="col-md-2 categories_container"><CategoryList/></div>
-              </div>
+              <Row className="row_container">
+                <Col md={2}></Col>
+                <Col md={8} className="posts_container"><PostsList/></Col>
+                <Col md={2} className="categories_container"><CategoryList/></Col>
+              </Row>
               
-              </div>
             )}/>
             <Route
             path="/:category/:id"

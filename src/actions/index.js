@@ -21,6 +21,7 @@ export const GET_ALL_POSTS = 'GET_ALL_POSTS'
 export const ADD_POST = 'ADD_POST'
 export const GET_POST = 'GET_POST'
 export const VOTE_ON_POST = 'VOTE_ON_POST'
+export const SORT_POST = 'SORT_POST'
 export const VOTE_ON_POST_FROMPOST = 'VOTE_ON_POST_FROMPOST'
 export const EDIT_POST = 'EDIT_POST'
 export const DELETE_POST = 'DELETE_POST'
@@ -66,6 +67,12 @@ export const votePost = (postId, option) => {
     voteOnPost(postId, option).then(
       () => dispatch({ type: VOTE_ON_POST, postId, option })
     )
+  }
+}
+
+export const sortPost = (sortType) => {
+  return dispatch => {
+    dispatch({ type: SORT_POST, sortType })
   }
 }
 
