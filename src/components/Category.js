@@ -34,9 +34,9 @@ class Category extends Component {
     }
   }
   
-  const mapStateToProps = ({ posts }) => {
+  const mapStateToProps = ({posts}) => {
     return {
-      posts: posts.posts
+      posts: posts
     }
   }
   

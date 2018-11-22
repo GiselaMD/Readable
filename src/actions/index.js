@@ -34,29 +34,19 @@ export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const fetchAllPosts = () => dispatch => (
   getPosts()
     .then(posts => {
-      posts.map(post => {
-          getCommentsForPost(post.id)
-          .then(comments => {
             dispatch({
               type: GET_ALL_POSTS,
-              post,
-              comments
+              posts
             })
-          })
       })
-    })
 )
 export const fetchPost = (id) => dispatch => (
   getPost(id)
     .then(post => {
-      getCommentsForPost(post.id)
-        .then(comments => {
           dispatch({
             type: GET_POST,
-            post,
-            comments
+            post
           }) 
-        })
     })
 )
 
@@ -97,11 +87,11 @@ export const voteComment = (commentId, option) => {
         })
   )
 
-  export const fetchAllComments = (parentId) => {
+  export const fetchAllCommentsForPost = (parentId) => {
     return (dispatch) => {
       getCommentsForPost(parentId).then(comments => {
         dispatch({ 
-          type: GET_COMMENT, parentId, comments 
+          type: GET_COMMENTS_FOR_POST, parentId, comments 
         })
       })
     }

@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import './App.css';
 import { connect } from 'react-redux'
-import { fetchPost, fetchAllComments } from '../actions'
+import { fetchPost, fetchAllCommentsForPost } from '../actions'
 import PostCard from './PostCard';
 import CommentCard from './CommentCard';
 
 
 class Post extends Component {
-  
   componentDidMount() {
     this.props.getPost(this.props.match.params.id)
     this.props.getComment(this.props.match.params.id)
@@ -17,7 +16,7 @@ class Post extends Component {
   // }
 
   render() {
-    const { post } = this.props.post
+    const { post, comments } = this.props
    
     //TODO: Botão para editar ou excluir post
     //TODO: Botão para votar no comentário
@@ -27,7 +26,7 @@ class Post extends Component {
       <div className="PostDetail" className='container'>
       <br/>
       <PostCard postId={post.id} post={post} score={post.voteScore}/>
-        {post.comments ? post.comments.map((comment) => {
+        {comments ? comments.map((comment) => {
         return (
             <CommentCard comment={comment}/>
         )
@@ -37,9 +36,9 @@ class Post extends Component {
   }
 }
 
-const mapStateToProps = ({ post, comments }) => {
+const mapStateToProps = ({ posts, comments }, ownProps) => {
   return {
-    post: post,
+    post: posts.find(p => p.id === ownProps.match.params.id),
     comments: comments
   }
 }
@@ -47,7 +46,7 @@ const mapStateToProps = ({ post, comments }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getPost: (id) => dispatch(fetchPost(id)),
-    getComment: (id) => dispatch(fetchAllComments(id))
+    getComment: (id) => dispatch(fetchAllCommentsForPost(id))
   }
 }
 

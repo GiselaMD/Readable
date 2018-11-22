@@ -63,8 +63,8 @@ class PostsList extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-    posts: state.posts.posts
+const mapStateToProps = ({posts}) => ({
+    posts: posts
 });
 
 const mapDispatchToProps = dispatch => ({
