@@ -20,7 +20,6 @@ class Post extends Component {
   render() {
     const { post, comments } = this.props
    
-    //TODO: Botão para editar ou excluir post
     //TODO: Botão para adicionar comentário
     
     return post ? (
@@ -29,6 +28,7 @@ class Post extends Component {
       <PostCard postId={post.id} post={post} score={post.voteScore}/>
       <Button className="edit_post_btn" bsStyle="link">Editar</Button>
       <Button className="remove_post_btn" bsStyle="link" onClick={() => this.onPostDelete()}>Excluir</Button>
+      <Button className="comment_post_btn" >Comentar</Button>
         {comments ? comments.map((comment) => {
         return (
             <CommentCard comment={comment}/>

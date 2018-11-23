@@ -1,7 +1,13 @@
 .edit_post_btn{
-    margin-top: -160px
+    margin-top: -160px;
+    margin-left: 20px;
 }
 .remove_post_btn{
     margin-top: -160px;
     color: #FF0000
+}
+.comment_post_btn{
+    margin-top: -90px;
+    margin-right: 30px;
+    float: right;
 }

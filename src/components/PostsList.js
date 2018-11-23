@@ -10,7 +10,6 @@ import {FaAngleDoubleRight} from 'react-icons/fa'
 import OrderBy from './OrderBy';
 
 class PostsList extends Component {
-    //TODO: Botão para criar post
   componentDidMount() {
     this.props.getPosts()
   }

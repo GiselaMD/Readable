@@ -13,7 +13,7 @@ class PostCard extends Component {
       const {post, score} = this.props
       return(
         <div>
-        <li key={post.id} className="listStyleNone">
+        <li key={post.id} className="cardlist">
           <Jumbotron>
                       <h2 className='post_title'>[POST] {post.title} </h2>
                       <div className='post_author'>Author: {post.author}</div>

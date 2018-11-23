@@ -13,7 +13,7 @@ class CommentCard extends Component {
         const {comment} = this.props
         return(
             <div>
-            <li key={comment.id} className="listStyleNone">
+            <li key={comment.id} className="cardlist">
               <Jumbotron className="card">
                           <div className='row'>
                               <div className='comment_author col-md-6'>{comment.author}: </div>

@@ -34,6 +34,11 @@
   height: 100px;
   background-color: #dbe6ff;
   text-align: center;
+  margin-bottom: 30px;
+  box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
+}
+.btn_addpost{
+  margin: 50px 0 20px 0
 }
 @keyframes App-logo-spin {
   from {
