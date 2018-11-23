@@ -35,14 +35,18 @@ class App extends Component {
               
             )}/>
             <Route
+            exact
+            path="/addPost"
+            render={() => (
+              <PostForm/>
+            )} />
+            <Route
             path="/:category/:id"
             component={PostDetail} />
             <Route
             path="/:category"
             component={Category} />
-            <Route
-            path="/addPost"
-            component={PostForm} />
+            
         </Switch>
       </div>
     );
