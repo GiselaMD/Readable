@@ -7,9 +7,6 @@ import { fetchAllCategories, updatePost, fetchPost } from '../actions';
 
 class EditPost extends Component {
   state = {
-    title: '',
-    category: '',
-    body: '',
     notValid: false,
     success: false
   }
@@ -20,8 +17,9 @@ class EditPost extends Component {
 
   editCurrentPost = e => {
     e.preventDefault();
-    console.log("add new post button submited")
-    const { title, body } = this.state
+
+    const title = e.target.title.value
+    const body = e.target.body.value
     const postId = this.props.match.params.id
 
     if (title && body) {
@@ -35,19 +33,6 @@ class EditPost extends Component {
         success: false
       })
     }
-  }
-
-  handleTitleChange(e) {
-    this.setState({ title: e.target.value })
-  }
-
-  handleAuthorChange(e) {
-    this.setState({ author: e.target.value })
-  }
-
-  handleBodyChange(e) {
-    this.setState({ body: e.target.value })
-    console.log(this.state.body)
   }
 
   handleCategoryChange = (e) => {
@@ -64,7 +49,7 @@ class EditPost extends Component {
             value={category.name}>{category.name}</option>
         ))
 
-      return(
+        return post ? (
         <div>
           <Row>
             <Col md={3}></Col>
@@ -86,34 +71,17 @@ class EditPost extends Component {
                   <input 
                   placeholder={post.title}
                   name='title' 
-                  onChange={(e) => this.handleTitleChange(e)}
-                  value={this.state.title}/>
+                  defaultValue={post.title}/>
                 </label> 
-                <br/>
-                {/* <label>
-                  Category:
-                  <select 
-                  name="category"
-                  value={this.state.category} 
-                  onChange={this.handleCategoryChange}>
-                    {categoryOptions}
-                  </select>
-                </label> */}
                 <br/>
                 <label>
                   <textarea  
                   placeholder={post.body}
-                  onChange={(e) => this.handleBodyChange(e)}
-                  value={this.state.body}
+                  name='body'
+                  defaultValue={post.body}
                   cols="30" 
                   rows="8" />
                 </label>
-                  <br/>
-                {/* <input 
-                  placeholder="Author"
-                  onChange={(e) => this.handleAuthorChange(e)}
-                  type="text" 
-                  value={this.state.author} /> */}
               
                 <Button block type="submit">Submit</Button>
               </form>
@@ -124,6 +92,10 @@ class EditPost extends Component {
             <Col md={3}></Col>
           </Row>
        
+        </div>
+      ) : (
+        <div className="container">
+            <h2 className="text_center">Error 404</h2> 
         </div>
       )
     }
