@@ -78,11 +78,11 @@ export const getCommentsForPost = (postId) =>
     .then(data => data)
 
 //Add a comment to a post
-export const addComment = (body, author, parentId) =>
+export const addComment = (comment) =>
   fetch(`${api}/comments`, {
     method: 'POST',
     headers: headers,
-    body: JSON.stringify({ parentId, body, author, id: uuid(), timestamp:Date.now()})
+    body: JSON.stringify(comment)
   }).then(res => res.json())
 
 //Get specific comment

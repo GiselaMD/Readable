@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
+import {Redirect} from 'react-router-dom'
 import uuid from 'uuid';
 import './Form.css';
 import { Row, Col, Button} from 'react-bootstrap'
 import { fetchAllCategories, createPost } from '../actions';
 
-class PostForm extends Component {
+class NewPost extends Component {
   state = {
     title: '',
     category: '',
@@ -72,63 +73,62 @@ class PostForm extends Component {
             value={category.name}>{category.name}</option>
         ))
 
-
       return(
         <div>
           <Row>
             <Col md={3}></Col>
             <Col md={6}>
-            <div className="form_container">
-            <div>
-                {this.state.success && (
-                  <h3>Your new post was added!</h3> 
-                )}
-              </div>
-              <div>
-                {this.state.notValid && (
-                  <h3>Please enter all values...</h3> 
-                )}
-            </div>
-
-            <h2>Create a new post</h2><br/>
-            <form onSubmit={this.addNewPost}>
-              <label>
-                Title:
-                <input 
-                placeholder={'What is your post about?'} 
-                name='title' 
-                onChange={(e) => this.handleTitleChange(e)}
-                value={this.state.title}/>
-              </label> 
-              <br/>
-              <label>
-                Category:
-                <select 
-                name="category"
-                value={this.state.category} 
-                onChange={this.handleCategoryChange}>
-                  {categoryOptions}
-                </select>
-              </label>
-              <br/>
-              <label>
-                <textarea  
-                placeholder='Write something about it'
-                onChange={(e) => this.handleBodyChange(e)}
-                value={this.state.body}
-                cols="30" 
-                rows="8" />
-              </label>
+            {this.state.success ? (
+                  <Redirect to="/" />
+            ) : 
+            (
+              <div className="form_container">
+                <div>
+                  {this.state.notValid && (
+                    <h3>Please enter all values...</h3> 
+                  )}
+                </div>
+              <h2>Create a new post</h2><br/>
+              <form onSubmit={this.addNewPost}>
+                <label>
+                  Title:
+                  <input 
+                  placeholder={'What is your post about?'} 
+                  name='title' 
+                  onChange={(e) => this.handleTitleChange(e)}
+                  value={this.state.title}/>
+                </label> 
                 <br/>
-               <input 
-                placeholder="Author"
-                onChange={(e) => this.handleAuthorChange(e)}
-                type="text" 
-                value={this.state.author} />
-             
-              <Button type="submit">Submit</Button>
-            </form>
-            </div>
+                <label>
+                  Category:
+                  <select 
+                  name="category"
+                  value={this.state.category} 
+                  onChange={this.handleCategoryChange}>
+                    {categoryOptions}
+                  </select>
+                </label>
+                <br/>
+                <label>
+                  <textarea  
+                  placeholder='Write something about it'
+                  onChange={(e) => this.handleBodyChange(e)}
+                  value={this.state.body}
+                  cols="30" 
+                  rows="8" />
+                </label>
+                  <br/>
+                <input 
+                  placeholder="Author"
+                  onChange={(e) => this.handleAuthorChange(e)}
+                  type="text" 
+                  value={this.state.author} />
+              
+                <Button block type="submit">Submit</Button>
+              </form>
+              </div>
+            )}
+            
             </Col>
             <Col md={3}></Col>
           </Row>
@@ -150,4 +150,4 @@ class PostForm extends Component {
     }
   }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostForm)
+export default connect(mapStateToProps, mapDispatchToProps)(NewPost)

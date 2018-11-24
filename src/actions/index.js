@@ -59,6 +59,14 @@ export const createPost = (post) => {
     )}
 }
 
+export const updatePost = (postId, title, body) => {
+  console.log("action update post:", postId, title, body)
+  return (dispatch) => {
+    editPost(postId, title, body).then(
+      () => dispatch({ type: EDIT_POST, postId, title, body })
+    )}
+}
+
 export const getAllPostsCategoryAction = (category) => dispatch => (
   getPostsInCategory(category)
     .then((posts) => {
@@ -97,6 +105,21 @@ export const voteComment = (commentId, option) => {
   return (dispatch) => {
     voteOnComment(commentId, option).then(
       () => dispatch({ type: VOTE_ON_COMMENT, commentId, option })
+    )
+  }
+}
+
+export const createComment = (comment) => {
+  return (dispatch) => {
+    addComment(comment).then(
+      () => dispatch({ type: ADD_COMMENT, comment })
+    )}
+}
+
+export const deleteCurrentComment= (commentId) => {
+  return (dispatch) => {
+    deleteComment(commentId).then(
+    () => dispatch({ type: DELETE_COMMENT, commentId })
     )
   }
 }

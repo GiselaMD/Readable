@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './App.css';
 import './PostDetail.css';
 import {Button} from 'react-bootstrap'
@@ -17,21 +17,23 @@ class Post extends Component {
   onPostDelete = () => {
     const id = this.props.match.params.id
     this.props.deleteCurrentPost(id)
+    this.props.history.push('/')
   }
   render() {
     const { post, comments } = this.props
-   
-    //TODO: Botão para adicionar comentário
     
     return post ? (
       <div className="PostDetail" className='container'>
       <br/>
       <PostCard postId={post.id} post={post} score={post.voteScore}/>
-      <Link to={'/addPost'}>
+      <Link to={`/${post.category}/${post.id}/editPost`}>
         <Button className="edit_post_btn" bsStyle="link">Editar</Button>
       </Link>
       <Button className="remove_post_btn" bsStyle="link" onClick={() => this.onPostDelete()}>Excluir</Button>
-      <Button className="comment_post_btn" >Comentar</Button>
+      <Link to={`/${post.category}/${post.id}/addComment`}>
+        <Button className="comment_post_btn" >Comentar</Button>
+      </Link>
+      
         {comments ? comments.map((comment) => {
         return (
             <CommentCard comment={comment}/>

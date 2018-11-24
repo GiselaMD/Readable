@@ -7,7 +7,9 @@ import PostsList from './PostsList';
 import CategoryList from './CategoryList';
 import Category from './Category';
 import PostDetail from './PostDetail';
-import PostForm from './PostForm';
+import NewPost from './NewPost';
+import EditPost from './EditPost';
+import CommentForm from './CommentForm';
 class App extends Component {
   render() {
     console.log('Props', this.props)
@@ -38,11 +40,17 @@ class App extends Component {
             exact
             path="/addPost"
             render={() => (
-              <PostForm/>
+              <NewPost/>
             )} />
             <Route
-            path="/:category/:id"
+            exact path="/:category/:id"
             component={PostDetail} />
+            <Route
+            exact path="/:category/:id/editPost"
+            component={EditPost} />
+            <Route
+            exact path="/:category/:id/addComment"
+            component={CommentForm} />
             <Route
             path="/:category"
             component={Category} />
