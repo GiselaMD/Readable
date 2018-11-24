@@ -1,5 +1,5 @@
-# Readable Project
-This project was made for the React Nanodegree
+# Readable Project - Udacity
+This project was made for the React Nanodegree.
 
 ## Important
 
@@ -9,7 +9,7 @@ This project depends on the 'api-server' directory
 
 ## Instructions
 
-In the "api-server" directory you must run:
+Inside the "api-server" directory you must run:
 
 **1 - `npm install` or `yarn install`**
 
@@ -19,7 +19,7 @@ Will install all dependecies.
 
 Runs the api in [http://localhost:3001](http://localhost:3001).
 
-In the "client" directory you must run:
+Inside the "client" directory you must run:
 
 **1 - `npm install` or `yarn install`**
 
@@ -27,7 +27,4 @@ Will install all dependecies.
 
 **2 - `npm start`**
 
-Runs the aplication in [http://localhost:3000](http://localhost:3000).
-
-
-
+Runs the application in [http://localhost:3000](http://localhost:3000).
