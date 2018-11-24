@@ -51,6 +51,14 @@ export const fetchPost = (id) => dispatch => (
     })
 )
 
+export const createPost = (post) => {
+  console.log(post)
+  return (dispatch) => {
+    addPost(post).then(
+      () => dispatch({ type: ADD_POST, post })
+    )}
+}
+
 export const getAllPostsCategoryAction = (category) => dispatch => (
   getPostsInCategory(category)
     .then((posts) => {

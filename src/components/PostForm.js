@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import uuid from 'uuid';
-import './App.css';
+import './Form.css';
 import { Row, Col, Button} from 'react-bootstrap'
-import { fetchAllCategories } from '../actions';
+import { fetchAllCategories, createPost } from '../actions';
 
 class PostForm extends Component {
   state = {
@@ -18,27 +18,24 @@ class PostForm extends Component {
     this.props.getCategories();
   }
 
-  onPostClick() {
+  addNewPost = e => {
+    e.preventDefault();
+    console.log("add new post button submited")
     const { title, category, author, body } = this.state
-    
+
     if (title && category && author && body) {
       const newPost = {
         id: uuid(),
         timestamp: Date.now(),
         title,
-        category,
+        body,
         author,
-        body
+        category
       } 
       this.props.addPost(newPost)
-        .then(() => this.setState({
-          success: true,
-          title: '',
-          category: '',
-          author: '',
-          body: '',
-          notValid: false 
-        }))
+      
+      this.setState({success: true})
+    
     } else {
       this.setState({
         notValid: true,
@@ -66,10 +63,10 @@ class PostForm extends Component {
     })
     
   }
-
     render() {
+      console.log(this.props.post)
       const { categories } = this.props
-      const categoryOptions = categories.map(category => ( 
+      const categoryOptions = categories && categories.map(category => ( 
           <option 
             key={category.name} 
             value={category.name}>{category.name}</option>
@@ -79,8 +76,9 @@ class PostForm extends Component {
       return(
         <div>
           <Row>
-            <Col md={2}></Col>
-            <Col md={8}>
+            <Col md={3}></Col>
+            <Col md={6}>
+            <div className="form_container">
             <div>
                 {this.state.success && (
                   <h3>Your new post was added!</h3> 
@@ -93,7 +91,7 @@ class PostForm extends Component {
             </div>
 
             <h2>Create a new post</h2><br/>
-            <form>
+            <form onSubmit={this.addNewPost}>
               <label>
                 Title:
                 <input 
@@ -104,8 +102,9 @@ class PostForm extends Component {
               </label> 
               <br/>
               <label>
-                Choose a category:
+                Category:
                 <select 
+                name="category"
                 value={this.state.category} 
                 onChange={this.handleCategoryChange}>
                   {categoryOptions}
@@ -127,10 +126,11 @@ class PostForm extends Component {
                 type="text" 
                 value={this.state.author} />
              
-              <input type="submit" value="Submit" onClick={this.onPostClick.bind(this)}/>
+              <Button type="submit">Submit</Button>
             </form>
+            </div>
             </Col>
-            <Col md={2}></Col>
+            <Col md={3}></Col>
           </Row>
        
         </div>
@@ -146,6 +146,7 @@ class PostForm extends Component {
   const mapDispatchToProps = (dispatch) => {
     return {
       getCategories: () => dispatch(fetchAllCategories()),
+      addPost: (newPost) => dispatch(createPost(newPost))
     }
   }
 

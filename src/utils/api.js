@@ -31,14 +31,13 @@ export const getPosts = () =>
     .then(data => data)
 
 //Add a new post.
-export const addPost = (title, body, author, category) =>
+export const addPost = (newPost) =>
   fetch(`${api}/posts`, {
     method: 'POST',
     headers: {
-        ...headers,
-        'Content-Type': 'application/json'
+        ...headers
     },
-    body: JSON.stringify({ title, body, author, category, id: uuid(), timestamp:Date.now()})
+    body: JSON.stringify(newPost)
   }).then(res => res.json())
 
 //Get specific post

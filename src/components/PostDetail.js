@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import './App.css';
 import './PostDetail.css';
 import {Button} from 'react-bootstrap'
@@ -26,7 +27,9 @@ class Post extends Component {
       <div className="PostDetail" className='container'>
       <br/>
       <PostCard postId={post.id} post={post} score={post.voteScore}/>
-      <Button className="edit_post_btn" bsStyle="link">Editar</Button>
+      <Link to={'/addPost'}>
+        <Button className="edit_post_btn" bsStyle="link">Editar</Button>
+      </Link>
       <Button className="remove_post_btn" bsStyle="link" onClick={() => this.onPostDelete()}>Excluir</Button>
       <Button className="comment_post_btn" >Comentar</Button>
         {comments ? comments.map((comment) => {

@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { getAllPostsCategoryAction } from '../actions'
 import PostCard from './PostCard';
 import './Category.css';
-import {Button, Row, Col, Grid} from 'react-bootstrap'
+import './PostsList';
+import {Button, Row, Col} from 'react-bootstrap'
+import {FaAngleDoubleRight} from 'react-icons/fa'
 import OrderBy from './OrderBy';
 import CategoryList from './CategoryList';
 class Category extends Component {
@@ -26,6 +29,13 @@ class Category extends Component {
            ? (  this.props.posts.map(post => 
                     <div className="container">
                         <PostCard postId={post.id} post={post} score={post.voteScore}/>
+                        <p className='text_btn_openpost'>
+                            <Link to={`/${post.category}/${post.id}`} >
+                                <Button className='btn_openpost' block>
+                                    <strong>Open Post</strong> <FaAngleDoubleRight></FaAngleDoubleRight>
+                                </Button>
+                            </Link>
+                        </p>
                     </div>
                 )
             ): 
