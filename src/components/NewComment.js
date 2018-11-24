@@ -4,9 +4,8 @@ import uuid from 'uuid';
 import './Form.css';
 import { Row, Col, Button} from 'react-bootstrap'
 import { createComment } from '../actions';
-import {Redirect} from 'react-router-dom'
 
-class CommentForm extends Component {
+class NewComment extends Component {
   state = {
     author: '',
     body: '',
@@ -60,7 +59,7 @@ class CommentForm extends Component {
             <Col md={6}>
             
             {this.state.success ? (
-              <Redirect to="/" />
+              <h3>Your comment was added!</h3> 
             ) : (
               <div className="form_container">
               <div>
@@ -105,4 +104,4 @@ class CommentForm extends Component {
     }
   }
 
-export default connect(null, mapDispatchToProps)(CommentForm)
+export default connect(null, mapDispatchToProps)(NewComment)

@@ -86,7 +86,7 @@ export const addComment = (comment) =>
   }).then(res => res.json())
 
 //Get specific comment
-export const getComments = (commentId) =>
+export const getComment = (commentId) =>
   fetch(`${api}/comments/${commentId}`, { headers })
       .then(res => res.json())
 

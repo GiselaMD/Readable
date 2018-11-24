@@ -9,7 +9,7 @@ import {
     deletePost,
     getCommentsForPost,
     addComment,
-    getComments,
+    getComment,
     voteOnComment,
     editComment,
     deleteComment
@@ -113,6 +113,24 @@ export const createComment = (comment) => {
   return (dispatch) => {
     addComment(comment).then(
       () => dispatch({ type: ADD_COMMENT, comment })
+    )}
+}
+
+export const fetchComment = (id) => dispatch => (
+  getComment(id)
+    .then(comment => {
+          dispatch({
+            type: GET_COMMENT,
+            comment
+          }) 
+    })
+)
+
+export const updateComment = (commentId, body) => {
+  console.log("action update COMMENT:", commentId, body)
+  return (dispatch) => {
+    editComment(commentId, body).then(
+      () => dispatch({ type: EDIT_COMMENT, commentId, body })
     )}
 }
 

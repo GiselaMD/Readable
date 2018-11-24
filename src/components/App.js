@@ -9,7 +9,8 @@ import Category from './Category';
 import PostDetail from './PostDetail';
 import NewPost from './NewPost';
 import EditPost from './EditPost';
-import CommentForm from './CommentForm';
+import NewComment from './NewComment';
+import EditComment from './EditComment';
 class App extends Component {
   render() {
     console.log('Props', this.props)
@@ -43,14 +44,18 @@ class App extends Component {
               <NewPost/>
             )} />
             <Route
+            exact path="/:commentId/editComment"
+            component={EditComment} />
+            <Route
             exact path="/:category/:id"
             component={PostDetail} />
             <Route
             exact path="/:category/:id/editPost"
             component={EditPost} />
+            
             <Route
             exact path="/:category/:id/addComment"
-            component={CommentForm} />
+            component={NewComment} />
             <Route
             path="/:category"
             component={Category} />

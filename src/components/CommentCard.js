@@ -36,7 +36,7 @@ class CommentCard extends Component {
                                 <Button bsStyle="danger" onClick={() => this.props.voteComment(comment.id, 'downVote')}><FaThumbsDown></FaThumbsDown></Button>
                             </Col>
                             <Col md={6}>
-                                <Link to={'/addPost'}>
+                                <Link to={`/${comment.id}/editComment`}>
                                     <Button className="" bsStyle="link">Editar</Button>
                                 </Link>
                                 <Button className="" bsStyle="link" onClick={() => this.onCommentDelete()}>Excluir</Button>
