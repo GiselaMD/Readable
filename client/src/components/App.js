@@ -46,12 +46,15 @@ class App extends Component {
             render={() => (
               <NewPost/>
             )} />
+            
             <Route
             exact path="/:commentId/editComment"
             component={EditComment} />
+
             <Route
             exact path="/:category/:id"
             component={PostDetail} />
+
             <Route
             exact path="/:category/:id/editPost"
             component={EditPost} />
@@ -59,6 +62,7 @@ class App extends Component {
             <Route
             exact path="/:category/:id/addComment"
             component={NewComment} />
+
             <Route
             path="/:category"
             component={Category} />
