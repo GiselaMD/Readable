@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './App.css';
 import './PostsList.css';
 import { connect } from 'react-redux'
-import { fetchAllPosts } from '../actions';
+import { fetchAllPosts } from '../actions/postActions';
 import {Button} from 'react-bootstrap'
 import PostCard from './PostCard';
 import {FaAngleDoubleRight} from 'react-icons/fa'

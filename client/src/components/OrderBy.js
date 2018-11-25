@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import './App.css';
-import { sortPost } from '../actions';
+import { sortPost } from '../actions/postActions';
 import {Button, Row, Col, Grid} from 'react-bootstrap'
 
 class OrderBy extends Component {

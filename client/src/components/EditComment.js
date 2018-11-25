@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import './Form.css';
 import { Row, Col, Button} from 'react-bootstrap'
-import { fetchComment, updateComment } from '../actions';
+import { fetchComment, updateComment } from '../actions/commentActions';
 
 class EditComment extends Component {
   state = {

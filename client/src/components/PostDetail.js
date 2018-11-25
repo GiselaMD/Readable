@@ -4,7 +4,8 @@ import './App.css';
 import './PostDetail.css';
 import {Button} from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { fetchPost, deleteCurrentPost, fetchAllCommentsForPost } from '../actions'
+import { fetchAllCommentsForPost } from '../actions/commentActions'
+import { fetchPost, deleteCurrentPost } from '../actions/postActions'
 import PostCard from './PostCard';
 import CommentCard from './CommentCard';
 

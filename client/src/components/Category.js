@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { getAllPostsCategoryAction } from '../actions'
+import { getAllPostsCategoryAction } from '../actions/postActions'
 import PostCard from './PostCard';
 import './Category.css';
 import './PostsList';

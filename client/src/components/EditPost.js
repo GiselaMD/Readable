@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import './Form.css';
 import { Row, Col, Button} from 'react-bootstrap'
-import { updatePost, fetchPost } from '../actions';
+import { updatePost, fetchPost } from '../actions/postActions';
 
 class EditPost extends Component {
   state = {

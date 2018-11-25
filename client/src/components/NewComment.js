@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import uuid from 'uuid';
 import './Form.css';
 import { Row, Col, Button} from 'react-bootstrap'
-import { createComment } from '../actions';
+import { createComment } from '../actions/commentActions';
 
 class NewComment extends Component {
   state = {

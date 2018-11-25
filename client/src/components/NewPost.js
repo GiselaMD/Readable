@@ -4,7 +4,8 @@ import {Redirect} from 'react-router-dom'
 import uuid from 'uuid';
 import './Form.css';
 import { Row, Col, Button} from 'react-bootstrap'
-import { fetchAllCategories, createPost } from '../actions';
+import { fetchAllCategories } from '../actions/categoryActions';
+import { createPost } from '../actions/postActions';
 
 class NewPost extends Component {
   state = {

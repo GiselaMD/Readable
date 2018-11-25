@@ -5,7 +5,7 @@ import './PostCard.css';
 import {Jumbotron, Button} from 'react-bootstrap'
 import {FaThumbsUp, FaThumbsDown} from 'react-icons/fa'
 import formatTimeStamp from '../utils/helpers'
-import { votePost } from '../actions';
+import { votePost } from '../actions/postActions';
 
 class PostCard extends Component {
   
