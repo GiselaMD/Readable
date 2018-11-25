@@ -31,6 +31,7 @@ export const GET_COMMENT = 'GET_COMMENT'
 export const VOTE_ON_COMMENT = 'VOTE_ON_COMMENT'
 export const EDIT_COMMENT = 'EDIT_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
+export const UPDATE_COMMENT_COUNT = 'UPDATE_COMMENT_COUNT'
 
 export const fetchAllPosts = () => dispatch => (
   getPosts()
@@ -134,13 +135,15 @@ export const updateComment = (commentId, body) => {
     )}
 }
 
-export const deleteCurrentComment= (commentId) => {
+export const deleteCurrentComment = (commentId) => {
   return (dispatch) => {
     deleteComment(commentId).then(
     () => dispatch({ type: DELETE_COMMENT, commentId })
     )
   }
 }
+
+export const updateCommentCount = (postId) => dispatch => dispatch({ type: UPDATE_COMMENT_COUNT, postId })
 
   export const fetchAllCategories = () => dispatch => (
     getCategories()

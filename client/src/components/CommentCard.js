@@ -7,11 +7,12 @@ import {Jumbotron, Button, Col, Row} from 'react-bootstrap'
 import {FaThumbsUp, FaThumbsDown} from 'react-icons/fa'
 import formatTimeStamp from '../utils/helpers'
 import { voteComment } from '../actions';
-import { deleteCurrentComment } from '../actions'
+import { deleteCurrentComment, updateCommentCount } from '../actions'
 
 class CommentCard extends Component {
     onCommentDelete = () => {
         this.props.deleteCurrentComment(this.props.comment.id)
+        this.props.updateCommentCount(this.props.postId)
       }
 
     render(){
@@ -53,6 +54,7 @@ class CommentCard extends Component {
     return {
         voteComment: (id, data) => dispatch(voteComment(id, data)),
         deleteCurrentComment: (id) => dispatch(deleteCurrentComment(id)),
+        updateCommentCount: (id) => dispatch(updateCommentCount(id)),
     }
   }
 

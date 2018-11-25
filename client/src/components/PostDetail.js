@@ -35,7 +35,7 @@ class Post extends Component {
       
         {comments ? comments.map((comment) => {
         return (
-            <CommentCard comment={comment}/>
+            <CommentCard comment={comment} postId={post.id} key={comment.id}/>
         )
         }) : '' }
       </div>

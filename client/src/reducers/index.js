@@ -1,4 +1,4 @@
-import {GET_ALL_POSTS, GET_CATEGORIES, GET_POST, ADD_COMMENT, VOTE_ON_POST, GET_POST_IN_CATEGORY, GET_COMMENT, VOTE_ON_COMMENT, GET_COMMENTS_FOR_POST, SORT_POST, DELETE_POST, ADD_POST, DELETE_COMMENT, EDIT_POST, EDIT_COMMENT} from '../actions'
+import {GET_ALL_POSTS, GET_CATEGORIES, GET_POST, ADD_COMMENT, VOTE_ON_POST, GET_POST_IN_CATEGORY, GET_COMMENT, VOTE_ON_COMMENT, GET_COMMENTS_FOR_POST, SORT_POST, DELETE_POST, ADD_POST, DELETE_COMMENT, EDIT_POST, EDIT_COMMENT, UPDATE_COMMENT_COUNT} from '../actions'
 import { combineReducers } from "redux";
 import sortBy from 'sort-by'
 
@@ -44,12 +44,25 @@ const posts = (state = [], action) => {
     console.log('EDIT_POST: ',action)
       return state.map(post => {
           if(post.id === action.postId) {
-            post.title = action.title
-            post.body = action.body
+            return {
+              ...post,
+              title: action.title,
+              body: action.body
+            }
           }
           return post
         })
-
+      
+    case UPDATE_COMMENT_COUNT:
+        return state.map(post => {
+          if (post.id === action.postId) {
+            return{
+              ...post,
+              commentCount: post.commentCount -= 1
+            }
+          }
+          return post
+        })
     default:
       return state
   }
@@ -94,7 +107,10 @@ function comments (state = [], action) {
       console.log('EDIT_COMMENT: ',action)
         return state.map(comment => {
             if(comment.id === action.commentId) {
-              comment.body = action.body
+              return{
+                ...comment,
+                body: action.body
+              }
             }
             return comment
           })
