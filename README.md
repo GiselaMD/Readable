@@ -1,6 +1,10 @@
 # Readable Project - Udacity
 This project was made for the React Nanodegree.
 
+Readable is a React App where users can create posts in predefined categories, comment on posts and other users' posts, and vote on posts and comments. Users can also edit and delete posts as well as comments.
+
+The client app is built with React and Redux.
+
 ## Important
 
 This project depends on the 'api-server' directory
