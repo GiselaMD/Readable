@@ -17,7 +17,6 @@ export const DELETE_COMMENT = 'DELETE_COMMENT'
 
 
 export const voteComment = (commentId, option) => {
-    console.log(option)
     return (dispatch) => {
       voteOnComment(commentId, option).then(
         () => dispatch({ type: VOTE_ON_COMMENT, commentId, option })
@@ -43,7 +42,6 @@ export const voteComment = (commentId, option) => {
   )
   
   export const updateComment = (commentId, body) => {
-    console.log("action update COMMENT:", commentId, body)
     return (dispatch) => {
       editComment(commentId, body).then(
         () => dispatch({ type: EDIT_COMMENT, commentId, body })

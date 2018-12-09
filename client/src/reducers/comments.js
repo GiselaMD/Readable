@@ -26,7 +26,6 @@ function comments (state = [], action) {
         return state.concat([action.comment])
   
       case EDIT_COMMENT:
-        console.log('EDIT_COMMENT: ',action)
           return state.map(comment => {
               if(comment.id === action.commentId) {
                 return{

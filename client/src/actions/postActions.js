@@ -39,7 +39,6 @@ export const fetchAllPosts = () => dispatch => (
   )
   
   export const createPost = (post) => {
-    console.log(post)
     return (dispatch) => {
       addPost(post).then(
         () => dispatch({ type: ADD_POST, post })
@@ -47,7 +46,6 @@ export const fetchAllPosts = () => dispatch => (
   }
   
   export const updatePost = (postId, title, body) => {
-    console.log("action update post:", postId, title, body)
     return (dispatch) => {
       editPost(postId, title, body).then(
         () => dispatch({ type: EDIT_POST, postId, title, body })
